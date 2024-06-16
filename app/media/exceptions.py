@@ -1,0 +1,6 @@
+class MediaserverError(Exception):
+    ...
+
+
+class NoSuchKey(Exception):
+    ...

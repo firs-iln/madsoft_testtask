@@ -1,0 +1,53 @@
+services:
+  db:
+    image: postgres:16
+    container_name: memes-db
+    restart: unless-stopped
+    env_file:
+      - app/db.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - "5432:5432"
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: memes-app
+    restart: unless-stopped
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  media_app:
+    build:
+      context: ./media_app
+      dockerfile: Dockerfile
+    container_name: memes-media-app
+    restart: unless-stopped
+    env_file:
+      - app/db.env
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
+    depends_on:
+      - minio
+  minio:
+    image: minio/minio
+    container_name: memes-minio
+    restart: unless-stopped
+    env_file:
+      - media_app/.env
+    ports:
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    command: server --console-address :9001 /data
+
+
+volumes:
+  postgres_data:
+  minio_data:
