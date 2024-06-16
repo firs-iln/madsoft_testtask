@@ -1,12 +1,11 @@
 from typing import Type
 from uuid import UUID
 
-from sqlalchemy import select, inspect, delete, update
+from crud import Schema, SQLModel
+from crud.exceptions import InvalidSchemaError, NotFoundException
+from sqlalchemy import delete, inspect, select, update
 from sqlalchemy.exc import NoResultFound
 from sqlalchemy.ext.asyncio import AsyncSession
-
-from crud import SQLModel, Schema
-from crud.exceptions import InvalidSchemaError, NotFoundException
 
 
 class AbstractRepo:

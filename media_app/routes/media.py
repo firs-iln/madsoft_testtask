@@ -1,13 +1,14 @@
 import logging
 import os
 
-from fastapi import APIRouter, Depends, File, UploadFile, BackgroundTasks, HTTPException
-from fastapi.responses import FileResponse
-
 from _utils import clean
 from dependencies import get_storage_client
+from fastapi import (APIRouter, BackgroundTasks, Depends, File, HTTPException,
+                     UploadFile)
+from fastapi.responses import FileResponse
 from storage import StorageClient
-from storage.exceptions import DownloadingError, DeletingError, UploadingError, NoSuchKey
+from storage.exceptions import (DeletingError, DownloadingError, NoSuchKey,
+                                UploadingError)
 
 router = APIRouter(
     prefix="/media",

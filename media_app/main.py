@@ -1,14 +1,12 @@
 import logging
 
 from fastapi import FastAPI
-
 from routes import media_router
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.DEBUG,
     handlers=[
-        # RotatingFileHandler("logs/bot.log", maxBytes=200000, backupCount=5),
         logging.StreamHandler(),
     ]
 )

@@ -3,9 +3,9 @@ from contextlib import asynccontextmanager
 
 from aiobotocore.session import get_session
 from botocore.exceptions import ClientError
-
+from storage.exceptions import (DeletingError, DownloadingError, NoSuchKey,
+                                UploadingError)
 from storage.StorageClient import StorageClient
-from storage.exceptions import UploadingError, DeletingError, DownloadingError, NoSuchKey
 
 logger = logging.getLogger(__name__)
 

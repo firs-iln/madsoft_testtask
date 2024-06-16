@@ -4,13 +4,13 @@ from unittest.mock import MagicMock
 from uuid import uuid4
 
 import pytest
-from starlette.testclient import TestClient
-
-from app import app
 from crud.exceptions import NotFoundException
 from crud.schemas import MemeResponse
 from dependencies.services import get_memes_service
 from services import MemesService
+from starlette.testclient import TestClient
+
+from app import app
 
 
 @pytest.fixture

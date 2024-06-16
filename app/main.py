@@ -1,14 +1,13 @@
 import logging
+from logging.handlers import RotatingFileHandler
 
 from fastapi import FastAPI
-
 from routes.memes import router as memes_router
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.DEBUG,
     handlers=[
-        # RotatingFileHandler("logs/bot.log", maxBytes=200000, backupCount=5),
         logging.StreamHandler(),
     ]
 )

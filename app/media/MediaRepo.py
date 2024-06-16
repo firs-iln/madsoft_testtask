@@ -1,9 +1,9 @@
 import os
 from contextlib import asynccontextmanager
 
+from config import media_config
 from fastapi import UploadFile
 from httpx import AsyncClient as client
-from config import media_config
 from media.exceptions import MediaserverError, NoSuchKey
 
 

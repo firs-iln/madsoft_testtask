@@ -1,6 +1,6 @@
 from crud.AbstractRepo import AbstractRepo
+from crud.schemas import MemeCreate, MemeResponse, MemeUpdate
 from database.models import Meme
-from crud.schemas import MemeResponse, MemeCreate, MemeUpdate
 
 
 class MemesRepo(AbstractRepo):

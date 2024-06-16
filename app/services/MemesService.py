@@ -1,11 +1,10 @@
 from uuid import UUID
 
-from fastapi import UploadFile
-
 from config import app_config
 from crud import Schema
 from crud.MemesRepo import MemesRepo
 from crud.schemas import MemeUpdate
+from fastapi import UploadFile
 from media import MediaRepo
 from services.AbstractService import AbstractService
 

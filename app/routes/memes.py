@@ -1,12 +1,12 @@
 import os
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException, Query, UploadFile, File, BackgroundTasks
-from fastapi.responses import FileResponse
-
-from crud.exceptions import NotFoundException, InvalidSchemaError
-from crud.schemas import MemeResponse, MemeCreate, MemeUpdate
+from crud.exceptions import InvalidSchemaError, NotFoundException
+from crud.schemas import MemeCreate, MemeResponse, MemeUpdate
 from dependencies import get_memes_service
+from fastapi import (APIRouter, BackgroundTasks, Depends, File, HTTPException,
+                     Query, UploadFile)
+from fastapi.responses import FileResponse
 from media.exceptions import MediaserverError, NoSuchKey
 from routes.schemas import CreateMeme, UpdateMeme
 from services.MemesService import MemesService
